@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Counter from './Component/Counter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    timeapp: 0,
+    togg: true,
+  };
+  // componentDidMount() {
+  //   setInterval(() => {
+  //     this.setState({ timeapp: this.state.timeapp + 1 });
+  //   }, 1000);
+  // }
+  toggle() {
+    this.setState({ togg: !this.state.togg });
+    console.log(this.state.togg);
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.toggle()}>toggle </button>
+        {this.state.togg && <Counter />}
+        {/* <p>Time App: {this.state.timeapp}</p> */}
+      </div>
+    );
+  }
 }
-
-export default App;
